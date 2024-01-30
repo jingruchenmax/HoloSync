@@ -136,7 +136,10 @@ PlayerSettings:
   vulkanEnableCommandBufferRecycling: 1
   loadStoreDebugModeEnabled: 0
   bundleVersion: 0.1
-  preloadedAssets: []
+  preloadedAssets:
+  - {fileID: -7461266226477039620, guid: 4acdc0bf77769b6468972601266c207b, type: 2}
+  - {fileID: 11400000, guid: f1235de8abb4a6246bc019fd236a2ac1, type: 2}
+  - {fileID: 6582301184767636952, guid: 63a4d3afd5340c046a0f7d545315b5c2, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -677,11 +680,11 @@ PlayerSettings:
   m_MobileRenderingPath: 1
   metroPackageName: HoloSync
   metroPackageVersion: 1.0.0.0
-  metroCertificatePath: 
+  metroCertificatePath: Assets/WSATestCertificate.pfx
   metroCertificatePassword: 
-  metroCertificateSubject: 
-  metroCertificateIssuer: 
-  metroCertificateNotAfter: 0000000000000000
+  metroCertificateSubject: Max
+  metroCertificateIssuer: Max
+  metroCertificateNotAfter: 00fc7ed3c572db01
   metroApplicationDescription: HoloSync
   wsaImages: {}
   metroTileShortName: HoloSync
