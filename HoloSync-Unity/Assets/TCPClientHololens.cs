@@ -1,32 +1,24 @@
 using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Text;
-using System.Threading;
 using UnityEngine;
-using UnityEngine.UI;
-using Microsoft.MixedReality.Toolkit.Experimental.UI;
-using TMPro;
 using System.Threading.Tasks;
 
+[RequireComponent(typeof(MRTKUIHandler))]
 public class TCPClientHololens : MonoBehaviour
 {
-    public MRTKTMPInputField ip_input;
-    public MRTKTMPInputField port_input;
-    public TextMeshProUGUI consoleText;
-
     System.Net.Sockets.TcpClient client;
     System.Net.Sockets.NetworkStream stream;
     private Task exchangeTask;
-    public int lastPacketToInt = -1;
-    public void Start()
-    {
-        
-    }
+    private bool exchangeStopRequested = false;
+    private MRTKUIHandler MRTKUI;
 
+    private void Awake()
+    {
+        MRTKUI = GetComponent<MRTKUIHandler>();
+    }
     public async void ConnectByUI()
     {
-        await ConnectUWP(ip_input.text, port_input.text);
+        await ConnectUWP(MRTKUI.ip_input.text, MRTKUI.port_input.text);
     }
 
     public async void Connect(string host, string port)
@@ -52,24 +44,11 @@ public class TCPClientHololens : MonoBehaviour
         }
     }
 
-    private bool exchangeStopRequested = false;
-    private string lastPacket = null;
-
     public void RestartExchange()
     {
         if (exchangeTask != null) Task.Run(() => StopExchange());
         exchangeStopRequested = false;
         exchangeTask = Task.Run(() => ExchangePackets());
-    }
-
-    public void Update()
-    {
-        if (lastPacket != null)
-        {
-            //do something
-            ShowData(lastPacket);
-            int.TryParse(lastPacket, out lastPacketToInt);
-        }
     }
 
     public void ExchangePackets()
@@ -83,21 +62,10 @@ public class TCPClientHololens : MonoBehaviour
             {
                 recv = stream.Read(bytes, 0, client.ReceiveBufferSize);
                 received = Encoding.UTF8.GetString(bytes, 0, recv);
-                lastPacket = received;
+                MRTKUI.UpdateDataPacket(received);
                 Debug.Log(received);
             }
         }
-    }
-
-    private void ShowData(string data)
-    {
-        if (data == null)
-        {
-            consoleText.text = "Received a frame but data was null";
-            return;
-        }
-
-        consoleText.text = data;
     }
 
     public async Task StopExchange()

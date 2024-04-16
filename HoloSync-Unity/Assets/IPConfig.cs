@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Microsoft.MixedReality.Toolkit.Experimental.UI;
 using System.IO;
-[RequireComponent(typeof(TCPClientHololens))]
+[RequireComponent(typeof(MRTKUIHandler))]
 public class IPConfig : MonoBehaviour
 {
     MRTKTMPInputField ip_input;
@@ -15,8 +15,8 @@ public class IPConfig : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        ip_input = GetComponent<TCPClientHololens>().ip_input;
-        port_input = GetComponent<TCPClientHololens>().port_input;
+        ip_input = GetComponent<MRTKUIHandler>().ip_input;
+        port_input = GetComponent<MRTKUIHandler>().port_input;
         Read("config.txt");
         ip_input.text = ip;
         port_input.text = port;
