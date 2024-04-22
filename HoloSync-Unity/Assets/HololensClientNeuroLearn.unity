@@ -5181,6 +5181,9 @@ GameObject:
   - component: {fileID: 2027453970}
   - component: {fileID: 2027453972}
   - component: {fileID: 2027453973}
+  - component: {fileID: 2027453975}
+  - component: {fileID: 2027453974}
+  - component: {fileID: 2027453976}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -5234,7 +5237,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2027453969}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d426be41ff5355439fbaf37a57bfc4e, type: 3}
   m_Name: 
@@ -5246,19 +5249,7 @@ MonoBehaviour:
   closeButton: {fileID: 184443091}
   onConnect:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2027453970}
-        m_TargetAssemblyTypeName: TCPClientHololens, Assembly-CSharp
-        m_MethodName: ConnectByUI
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onDisconnect:
     m_PersistentCalls:
       m_Calls:
@@ -5274,6 +5265,55 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2027453974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027453969}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0ca93ff26d0c3d42bd6b66586e3340f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  requestTimeGap: 1
+--- !u!114 &2027453975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027453969}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 863a99eb84d32db4dbffd4ae71c9b579, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: 
+  web: ws://127.0.0.1:5001
+  onMessageReceived:
+    m_PersistentCalls:
+      m_Calls: []
+  onDisableInteraction:
+    m_PersistentCalls:
+      m_Calls: []
+  onEnableInteraction:
+    m_PersistentCalls:
+      m_Calls: []
+  isWebSocketStarted: 0
+--- !u!114 &2027453976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027453969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3607ab06b7084d4a9c7e0044a459d9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2074616310
 GameObject:
   m_ObjectHideFlags: 0

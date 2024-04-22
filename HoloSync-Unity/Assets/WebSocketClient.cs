@@ -11,11 +11,11 @@ public class WebSocketClient : MonoBehaviour
     WebSocket websocket;
     [HideInInspector]
     public string message;
-    // public string web = "wss://192.168.0.1";
+    public string web = "ws://127.0.0.1:5001";
     public UnityEvent onMessageReceived;
     public UnityEvent onDisableInteraction;
     public UnityEvent onEnableInteraction;
-    bool isWebSocketStarted = false;
+    public bool isWebSocketStarted = false;
     MRTKUIHandler MRTKUI;
     // Start is called before the first frame update
     private void Awake()
@@ -24,10 +24,10 @@ public class WebSocketClient : MonoBehaviour
     }
     public async void StartWebSocket()
     {
-        websocket = new WebSocket(MRTKUI.ip_input.text);
-        isWebSocketStarted = true;
+        websocket = new WebSocket(web);
         websocket.OnOpen += () =>
         {
+            SendWebSocketMessage("data");
             MRTKUI.UpdateDataPacket("Connection open!");
             Debug.Log("Connection open!");
         };

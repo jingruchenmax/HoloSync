@@ -12,11 +12,20 @@ public class NeuroLearnManager : MonoBehaviour
     void Start()
     {
         webSocketClient = GetComponent<WebSocketClient>();
+        webSocketClient.StartWebSocket();
         StartCoroutine("NeuroLearnRequest",requestTimeGap);
     }
 
     void NeuroLearnRequest()
     {
-        webSocketClient.SendWebSocketMessage("GetProcessedData");
+        if (webSocketClient.isWebSocketStarted)
+        {
+            webSocketClient.SendWebSocketMessage("data");
+        }
+
+        else
+        {
+            webSocketClient.StartWebSocket();
+        }
     }
 }
